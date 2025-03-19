@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Speech - Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ====== Global Styles ====== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* ====== Main Container ====== */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 22px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* ====== Audio Player ====== */
+        .audio-container {
+            margin: 20px 0;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 600px;
+            outline: none;
+            border-radius: 8px;
+        }
+
+        /* ====== Buttons ====== */
+        .btn-container {
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: #fff;
+            background: #4CAF50;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #45a049;
+        }
+
+        .btn.download {
+            background: #2196F3;
+        }
+
+        .btn.download:hover {
+            background: #1976D2;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        /* ====== Back Button ====== */
+        .btn.back {
+            background: #f44336;
+        }
+
+        .btn.back:hover {
+            background: #d32f2f;
+        }
+
+        /* ====== Footer ====== */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✅ PDF to Speech - Result</h1>
+
+    <h3>🎧 Listen to Your Audio:</h3>
+    
+    <!-- Audio Player -->
+    <div class="audio-container">
+        <audio controls>
+            <source src="{{ url_for('download', filename=filename) }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Buttons for Download and Back -->
+    <div class="btn-container">
+        <a href="{{ url_for('download', filename=filename) }}" download>
+            <button class="btn download">
+                <i class="fas fa-download"></i> Download Audio
+            </button>
+        </a>
+
+        <a href="{{ url_for('index') }}">
+            <button class="btn back">
+                <i class="fas fa-arrow-left"></i> Upload Another PDF
+            </button>
+        </a>
+    </div>
+
+    <div class="footer">
+        <p>✨ Created by <strong>Vidhik Dang</strong> | PDF to Speech Converter</p>
+    </div>
+</div>
+
+</body>
+</html>
